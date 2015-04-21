@@ -1,7 +1,7 @@
 <?php
-require_once (dirname(__FILE__) . "/include/common.inc.php");
-header("Content-Type: text/html; charset=utf-8");
-require_once(dirname(__FILE__)."/include/mobile.inc.php");
+require (dirname(__FILE__) . "/include/common.inc.php");
+require (dirname(__FILE__)."/include/mobile.inc.php");
+header ("Content-Type: text/html; charset=utf-8");
 
 $dsql = new DedeSql(false);
 $cfg_templets_dir = $cfg_basedir.$cfg_templets_dir;
@@ -10,7 +10,7 @@ $newartlist = '';
 $channellistnext = '';
 $hostName = 'http://' . $_SERVER['HTTP_HOST'];
 
-if(empty($action))
+if (empty($action))
 {
     $action = 'index';
 }
@@ -25,7 +25,7 @@ elseif ($action !='list' && $action != 'index' && $action != 'article')
 $dsql->SetQuery("Select id,typename From `#@__arctype` where reid=0 And channeltype=1 And ishidden=0 And ispart<>2 order by sortrank limit 0,10");
 $dsql->Execute();
 $channellist = '<li><a href="' . $hostName . '">首页</a></li>';
-while($row=$dsql->GetObject())
+while ($row=$dsql->GetObject())
 {
     $channellist .= "<li><a href='{$hostName}/list/{$row->id}'>{$row->typename}</a></li>";
 }
@@ -36,13 +36,13 @@ $curtime = strftime("%Y-%m-%d %H:%M:%S",time());
 $cfg_webname = ConvertStr($cfg_webname);
 
 //主页
-if($action=='index')
+if ($action=='index')
 {
 
     //最新文章10篇
     $dsql->SetQuery("Select id,title,pubdate From `#@__archives` where channel=1 And arcrank = 0 order by id desc limit 0,10");
     $dsql->Execute();
-    while($row=$dsql->GetObject())
+    while ($row=$dsql->GetObject())
     {
         $newartlist .= "<li class='am-g'><a href='{$hostName}/article/{$row->id}' class='am-list-item-hd'>".ConvertStr($row->title)."</a></li>";
     }
@@ -50,7 +50,7 @@ if($action=='index')
     //typeid=1的前10条
     $dsql->SetQuery("Select id,title,pubdate From `#@__archives` where channel=1 And arcrank = 0 And typeid=1 order by id desc limit 0,5");
     $dsql->Execute();
-    while($row=$dsql->GetObject())
+    while ($row=$dsql->GetObject())
     {
         $newartlist2 .= "<li class='am-g'><a href='{$hostName}/article/{$row->id}' class='am-list-item-hd'>".ConvertStr($row->title)."</a></li>";
     }
@@ -58,7 +58,7 @@ if($action=='index')
     //typeid=2的前10条
     $dsql->SetQuery("Select id,title,pubdate From `#@__archives` where channel=1 And arcrank = 0 And typeid=2 order by id desc limit 0,5");
     $dsql->Execute();
-    while($row=$dsql->GetObject())
+    while ($row=$dsql->GetObject())
     {
         $newartlist3 .= "<li class='am-g'><a href='{$hostName}/article/{$row->id}' class='am-list-item-hd'>".ConvertStr($row->title)."</a></li>";
     }
@@ -66,7 +66,7 @@ if($action=='index')
     //找4张幻灯片flag=f的文章
     $dsql->SetQuery("Select id,title,litpic From `#@__archives` where channel=1 And FIND_IN_SET('f',flag) order by id desc limit 0,4");
     $dsql->Execute();
-    while($row=$dsql->GetObject())
+    while ($row=$dsql->GetObject())
     {
         $newartlistSlide .= "<li><a href='{$hostName}/article/{$row->id}'><img style='max-width:500px;margin: 0 auto;height:180px;' src='{$row->litpic}'><div class='am-slider-desc'>{$row->title}</div></a></li>";
     }
@@ -75,7 +75,7 @@ if($action=='index')
     $dsql->SetQuery("Select id,title,litpic From `#@__archives` where channel=1 And FIND_IN_SET('p',flag) order by pubdate desc limit 0,4");
     $dsql->Execute();
 
-    while($row=$dsql->GetObject())
+    while ($row=$dsql->GetObject())
     {
         $newartlistPic .= "<li><div class='am-gallery-item'><a href='{$hostName}/article/{$row->id}' class=><img style='width:145px;height:82px;' src='{$row->litpic}'/><h3 class='am-gallery-title'>{$row->title}</h3><div class='am-gallery-desc'>".date("m-d",$row->pubdate)."</div></a></div></li>";
     }
@@ -89,15 +89,15 @@ if($action=='index')
 else if ($action=='list')
 {
     $id = ereg_replace("[^0-9]", '', $id);
-    if(empty($id))
+    if (empty($id))
     {
         exit('List Error!');
     }
 
-    require_once(dirname(__FILE__)."/include/datalistcpWap.class.php");
+    require (dirname(__FILE__)."/include/datalistcpWap.class.php");
     $row = $dsql->GetOne("Select typename,ishidden, description,seotitle,keywords From `#@__arctype` where id='$id' ");
 
-    if($row['ishidden']==1)
+    if ($row['ishidden']==1)
     {
         exit('this listID is hiddening');
     }
@@ -111,7 +111,7 @@ else if ($action=='list')
     $dsql->SetQuery("Select id,typename From `#@__arctype` where reid='$id' And channeltype=1 And ishidden=0 And ispart<>2 order by sortrank");
     $dsql->Execute();
 
-    while($row=$dsql->GetObject())
+    while ($row=$dsql->GetObject())
     {
         $channellistnext .= "<li><a href='{$hostName}/list/{$row->id}'>".ConvertStr($row->typename)."</a></li>";
     }
@@ -128,7 +128,7 @@ else if ($action=='list')
 else if ($action=='article')
 {
     $id = ereg_replace("[^0-9]", '', $id);
-    if(empty($id))
+    if (empty($id))
     {
         exit('Article Error!');
     }
@@ -138,7 +138,7 @@ else if ($action=='article')
       left join `#@__addonarticle` addon on addon.aid=arc.id
       where arc.id='$id' ";
     $row = $dsql->GetOne($query,MYSQL_ASSOC);
-    foreach($row as $k=>$v)
+    foreach ($row as $k=>$v)
     {
         $$k = $v;
     }
@@ -149,7 +149,7 @@ else if ($action=='article')
     $keywords = ConvertStr($keywords);
     $description = ConvertStr($description);
 
-    if($ishidden==1)
+    if ($ishidden==1)
     {
         exit('article is hiddening');
     }
