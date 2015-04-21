@@ -1,0 +1,118 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><?php echo $cfg_webname;?></title>
+  <meta name="description" content="<?php echo $cfg_description;?>">
+  <meta name="keywords" content="<?php echo $cfg_keywords;?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="<?php echo $hostName; ?>/templets/mobile/assets/i/favicon.png">
+  <link rel="stylesheet" href="<?php echo $hostName; ?>/templets/mobile/assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="<?php echo $hostName; ?>/templets/mobile/assets/css/app.css">
+  <style type="text/css">
+  .am-g > a{
+    max-height:100%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;
+  }
+  </style>
+</head>
+<body>
+<!-- Header -->
+<header data-am-widget="header" class="am-header am-header-default">
+  <h1 class="am-header-title">
+    <a href="#title-link"><?php echo $cfg_webname;?></a>
+  </h1>
+</header>
+
+<!-- Menu -->
+<nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas>
+  <a href="javascript: void(0)" class="am-menu-toggle">
+    <i class="am-menu-toggle-icon am-icon-bars"></i>
+  </a>
+  <div class="am-offcanvas">
+    <div class="am-offcanvas-bar">
+      <ul class="am-menu-nav sm-block-grid-1">
+        <?php echo $channellist; ?>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Slider -->
+<div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{"directionNav":true}'>
+  <ul class="am-slides">
+    <?php echo $newartlistSlide; ?>
+  </ul>
+</div>
+
+<!-- List -->
+<div data-am-widget="list_news" class="am-list-news am-list-news-default">
+  <!--列表标题-->
+  <div class="am-list-news-hd am-cf">
+    <!--带更多链接-->
+    <a href="###">
+      <h2>最新更新</h2>
+    </a>
+  </div>
+  <div class="am-list-news-bd">
+    <ul class="am-list">
+      <?php echo $newartlist; ?>
+    </ul>
+  </div>
+  
+</div>
+
+<!-- Gallery pic-->
+<ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+  am-avg-md-3 am-avg-lg-4 am-gallery-default" data-am-gallery="{ pureview: true }">
+    <?php echo $newartlistPic; ?>    
+</ul>
+
+<!-- List -->
+<div data-am-widget="list_news" class="am-list-news am-list-news-default">
+  <!--列表标题-->
+  <div class="am-list-news-hd am-cf">
+    <!--带更多链接-->
+    <a href="###">
+      <h2>栏目1</h2>
+    </a>
+  </div>
+  <div class="am-list-news-bd">
+    <ul class="am-list">
+      <?php echo $newartlist2; ?>
+    </ul>
+  </div>
+  <!--更多在底部-->
+  <div class="am-list-news-ft">
+    <a class="am-list-news-more am-btn am-btn-default" href="<?php echo $hostName ?>/list/1">查看更多 &raquo;</a>
+  </div>
+</div>
+
+<!-- List -->
+<div data-am-widget="list_news" class="am-list-news am-list-news-default">
+  <!--列表标题-->
+  <div class="am-list-news-hd am-cf">
+    <!--带更多链接-->
+    <a href="###">
+      <h2>栏目2</h2>
+    </a>
+  </div>
+  <div class="am-list-news-bd">
+    <ul class="am-list">
+      <?php echo $newartlist3; ?>
+    </ul>
+  </div>
+  <!--更多在底部-->
+  <div class="am-list-news-ft">
+    <a class="am-list-news-more am-btn am-btn-default" href="<?php echo $hostName ?>/list/2">查看更多 &raquo;</a>
+  </div>
+</div>
+
+
+<?php include($cfg_templets_dir."/mobile/footer.htm"); ?>
+<script src="<?php echo $hostName; ?>/templets/mobile/assets/js/jquery.min.js"></script>
+<script src="<?php echo $hostName; ?>/templets/mobile/assets/js/amazeui.min.js"></script>
+</body>
+</html>
