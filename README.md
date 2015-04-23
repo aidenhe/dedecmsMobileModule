@@ -3,12 +3,17 @@
 
 [toc]
 
-两个版本(动态|静态)页面都是一致，全都是UTF-8版本、一个伪静态、一个真静态，如果网站小，建议使用动态版，如果网站大，建议使用静态html版本。模板基于妹子UI控件~
+两个版本(动态|静态)页面都是一致，git上提供UTF-8版本、一个伪静态、一个真静态，如果网站小，建议使用动态版，如果网站大，建议使用静态html版本。模板基于妹子UI控件~
+
+GBK插件下载（目前只有静态版本）：http://pan.baidu.com/s/1dDtT0mH
+
+* `PHPActionModule`文件夹代表动态版本，含有xml插件
+* `makeMobileHtml`文件夹代表生成html静态版本，含有xml插件
 
 
 ![](http://img.my.csdn.net/uploads/201504/23/1429718923_4661.gif-thumb.jpg)
 
-有问题上博客提问：
+有问题上博客提问：http://helonghua.com/2015/03/23/dedecms-wap/
 
 ##动态版本PHPActionModule
 
@@ -83,11 +88,15 @@ location ~* /(list|article)/ {
 
 ##mobile生成静态版
 
-与静态版本一样，下载`makeMobileHtml`文件夹下的XML 。到织梦后台安装模块
+与静态版本一样，下载`makeMobileHtml`文件夹下的XML 。
+
+gbk版本下载地址：http://pan.baidu.com/s/1dDtT0mH
+
+到织梦后台安装模块
 
 安装完之后：出现模块控制
 
-![](http://img.my.csdn.net/uploads/201504/23/1429722608_1586.png =150x300)
+![](http://ww4.sinaimg.cn/large/005ItG0Rjw1erfh0ey4g4j304608z74e.jpg)
 
 按字面意思很好理解。不做解释了
 
@@ -152,7 +161,7 @@ location ~* /(uploads)/ {
 
 ###添加文章的时候自动生成移动端html
 
-![](http://img.my.csdn.net/uploads/201504/23/1429722260_7965.png =500x150)
+![](http://ww1.sinaimg.cn/large/005ItG0Rjw1erfh0ga30fj30m8059q38.jpg)
 
 如果想要实现上面的功能，很简单，方法我已经写好了。
 
@@ -162,7 +171,7 @@ location ~* /(uploads)/ {
 
 如图所示添加代码：
 
-![](http://img.my.csdn.net/uploads/201504/23/1429725304_6561.png =796x148)
+![](http://ww1.sinaimg.cn/large/005ItG0Rjw1erfh0dtt8ej30m8045t9o.jpg)
 
 代码：
 

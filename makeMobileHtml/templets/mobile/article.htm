@@ -1,0 +1,93 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><?php echo $title;?></title>
+  <meta name="description" content="<?php echo $description;?>">
+  <meta name="keywords" content="<?php echo $keywords;?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="<?php echo $hostName; ?>/assets/i/favicon.png">
+  <link rel="stylesheet" href="<?php echo $hostName; ?>/assets/css/amazeui.min.css">
+  <style type="text/css">
+  .am-g > a{
+    max-height:100%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;
+  }
+  </style>
+</head>
+<body>
+<!-- Header -->
+<header data-am-widget="header" class="am-header am-header-default">
+  <h1 class="am-header-title">
+    <a href="#title-link"><?php echo $title;?></a>
+  </h1>
+</header>
+
+<!-- Menu -->
+<nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas>
+  <a href="javascript: void(0)" class="am-menu-toggle">
+    <i class="am-menu-toggle-icon am-icon-bars"></i>
+  </a>
+  <div class="am-offcanvas">
+    <div class="am-offcanvas-bar">
+      <ul class="am-menu-nav sm-block-grid-1">
+        <?php echo $channellist; ?>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- position -->
+<ol class="am-breadcrumb">
+  <li><a href="<?php echo $hostName; ?>">首页</a></li>
+  <li><a href='<?php echo $hostName; ?>/list/<?php echo $typeid; ?>.html'><?php echo $typename; ?></a></li>
+  <li class="am-active">正文</li>
+</ol>
+
+<!-- article -->
+<article class="am-article">
+  <div class="am-u-sm-12 am-article" style="text-align:center;">
+    <h1 class="am-article-title"><?php echo $title;?></h1>
+    <p class="am-article-meta"><?php echo $writer;echo '('.$pubdate.')'; ?></p>
+  </div>
+
+  <div style="padding-top: 2.4rem;clear: both;"><hr class="am-article-divider" /></div>
+
+  <div class="am-article-bd am-u-md-9 am-u-md-push-3">
+    <?php echo $body; ?>
+  </div>
+</article>
+
+<!-- Navbar -->
+<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default "
+     id="">
+  <ul class="am-navbar-nav am-cf am-avg-sm-4">
+    <li>
+      <a href="<?php echo $hostName; ?>">
+        <span class="am-icon-home"></span>
+        <span class="am-navbar-label">HOME</span>
+      </a>
+    </li>
+    <li data-am-navbar-share>
+      <a href="###">
+        <span class="am-icon-share-square-o"></span>
+        <span class="am-navbar-label">分享</span>
+      </a>
+    </li>
+    <li data-am-navbar-qrcode>
+      <a href="###">
+        <span class="am-icon-qrcode"></span>
+        <span class="am-navbar-label">本页二维码</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+<?php include($cfg_templets_dir."/mobile/footer.htm"); ?>
+
+<script src="<?php echo $hostName; ?>/assets/js/jquery.min.js"></script>
+<script src="<?php echo $hostName; ?>/assets/js/amazeui.min.js"></script>
+</body>
+</html>
